@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-server-github
+  name: pc-ubuntu-server
   labels:
-    app: python-server-app
+    app: pc-ubuntu-server-app
 spec:
   selector:
     matchLabels:
-        app: python-server-app
+        app: pc-ubuntu-server-app
   replicas: 4
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app: python-server-app
+        app: pc-ubuntu-server-app
     spec:
       containers:
-        - name: python-server-app
+        - name: pc-ubuntu-server-app
           image: demo-image-name
           ports:
             - containerPort: 8080
