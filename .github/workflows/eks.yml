@@ -27,6 +27,7 @@ jobs:
         PRISMA_API_URL: ${{ secrets.PCCS_CONSOLE_URL }}
       with:
         api-key: ${{ secrets.PCC_USER }}::${{ secrets.PCC_PASS }}
+        use_enforcement_rules: true
     
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
