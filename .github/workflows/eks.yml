@@ -6,6 +6,9 @@ on:
     branches: [ main ]
 name: EKS - Build, Scan and Deploy
 
+permissions:
+  security-events: write # Required for uploading SARIF files
+
 jobs:
   deploy:
     name: EKS - Build, Scan and Deploy
