@@ -65,6 +65,13 @@ jobs:
         pcc_user: ${{ secrets.PCC_USER }}
         pcc_pass: ${{ secrets.PCC_PASS }}
         image_name: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.REPO_NAME }}:${{ github.sha }}
+
+      # (Optional) for compatibility with GitHub's code scanning alerts
+    - name: Upload SARIF file
+      if: ${{ always() }} # necessary if using failure thresholds in the image scan
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: ${{ steps.scan.outputs.sarif_file }}
       
     # Push the Docker image to Amazon ECR
     - name: Tag and Push the image to Amazon ECR
